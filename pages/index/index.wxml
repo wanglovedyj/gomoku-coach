@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="title">五子棋陪练</view>
+  <view class="subtitle">经典策略对战游戏</view>
+  
+  <view class="menu">
+    <view class="menu-item" bindtap="startGame" data-mode="pvp">
+      <text class="icon">👥</text>
+      <text class="label">双人对战</text>
+    </view>
+    <view class="menu-item" bindtap="startGame" data-mode="pve-easy">
+      <text class="icon">🤖</text>
+      <text class="label">简单AI</text>
+    </view>
+    <view class="menu-item" bindtap="startGame" data-mode="pve-medium">
+      <text class="icon">🧠</text>
+      <text class="label">中等AI</text>
+    </view>
+    <view class="menu-item" bindtap="startGame" data-mode="pve-hard">
+      <text class="icon">👑</text>
+      <text class="label">困难AI</text>
+    </view>
+  </view>
+  
+  <view class="rules">
+    <view class="rules-title">游戏规则</view>
+    <text class="rules-text">
+      1. 黑白双方轮流下棋
+      2. 先连成五子者获胜
+      3. 横、竖、斜均可连线
+    </text>
+  </view>
+</view>

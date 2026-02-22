@@ -1,0 +1,7 @@
+{
+  "description": "五子棋",
+  "rules": [{
+    "action": "allow",
+    "page": "*"
+  }]
+}

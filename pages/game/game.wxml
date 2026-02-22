@@ -1,0 +1,61 @@
+<view class="container">
+  <!-- 游戏信息 -->
+  <view class="game-info">
+    <view class="player {{currentPlayer === 'black' ? 'active' : ''}}">
+      <view class="stone black"></view>
+      <text>黑棋{{mode === 'pvp' ? '' : '(你)'}}</text>
+    </view>
+    <view class="vs">VS</view>
+    <view class="player {{currentPlayer === 'white' ? 'active' : ''}}">
+      <view class="stone white"></view>
+      <text>白棋{{mode === 'pvp' ? '' : '(AI)'}}</text>
+    </view>
+  </view>
+
+  <!-- 棋盘 -->
+  <view class="board-container">
+    <view class="board">
+      <!-- 网格线 -->
+      <view class="grid-lines">
+        <view wx:for="{{15}}" wx:key="index" class="grid-row">
+          <view wx:for="{{15}}" wx:key="index" class="grid-cell"></view>
+        </view>
+      </view>
+      
+      <!-- 棋子 -->
+      <view class="stones">
+        <view 
+          wx:for="{{stones}}" 
+          wx:key="index"
+          class="stone {{item.color}} {{item.isNew ? 'new' : ''}}"
+          style="left: {{item.x * 100 / 14}}%; top: {{item.y * 100 / 14}}%;"
+        ></view>
+      </view>
+      
+      <!-- 点击区域 -->
+      <view class="click-area">
+        <view 
+          wx:for="{{225}}" 
+          wx:key="index"
+          class="click-cell"
+          data-x="{{index % 15}}"
+          data-y="{{Math.floor(index / 15)}}"
+          bindtap="onCellTap"
+        ></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 游戏状态 -->
+  <view class="status">
+    <text wx:if="{{!gameOver}}">{{currentPlayer === 'black' ? '黑棋' : '白棋'}}回合</text>
+    <text wx:if="{{gameOver}}" class="winner">{{winner === 'black' ? '黑棋获胜！' : '白棋获胜！'}}</text>
+  </view>
+
+  <!-- 按钮 -->
+  <view class="buttons">
+    <button class="btn btn-secondary" bindtap="undoMove" disabled="{{stones.length === 0 || gameOver}}">悔棋</button>
+    <button class="btn btn-primary" bindtap="restartGame">重新开始</button>
+    <button class="btn btn-secondary" bindtap="backToMenu">返回菜单</button>
+  </view>
+</view>
